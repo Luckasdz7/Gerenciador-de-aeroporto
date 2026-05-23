@@ -11,7 +11,7 @@ public class Conexao {
 	public Connection conectar() {
 		String url = "jdbc:mysql://localhost:3306/bancoaeroporto";
 		String usuario = "root";
-		String senha = "123456";
+		String senha = "";
 		
 		try {
 			Connection conexao = DriverManager.getConnection(url, usuario, senha);
