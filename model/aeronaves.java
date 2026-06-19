@@ -16,6 +16,15 @@ public class aeronaves {
 		this.modelos = modelos;
 		this.capacidade = capacidade;
 	}
+	
+	
+	
+	public int getId_aeronaves() {
+		return id_aeronaves;
+	}
+	public void setId_aeronaves(int id_aeronaves) {
+		this.id_aeronaves = id_aeronaves;
+	}
 	public String getModelos() {
 		return modelos;
 	}
@@ -28,6 +37,7 @@ public class aeronaves {
 	public void setCapacidade(int capacidade) {
 		this.capacidade = capacidade;
 	}
+	
 	
 	
 	
