@@ -12,6 +12,7 @@ public class menu {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		/*
 		Scanner sc = new Scanner(System.in);
 		vooBO bo = new vooBO();
 		System.out.println("Sitema de gerenciamento de aeroporoto:");
@@ -133,7 +134,7 @@ public class menu {
                     break;
             }
         }
-		
+		*/
 		
 	}
 	

@@ -7,6 +7,7 @@ public class voos {
 	
 	private int voos; 
 
+	private int id_voo;
 	private String Embarque;
 	private String Desembarque;
 	private String numero_voo;
@@ -36,6 +37,16 @@ public class voos {
 		return aeronaves;
 	}
 	
+	
+	
+	
+
+	public int getId_voo() {
+		return id_voo;
+	}
+	public void setId_voo(int id_voo) {
+		this.id_voo = id_voo;
+	}
 	public void setAeronaves(aeronaves aeronaves) {
 		this.aeronaves = aeronaves;
 	}

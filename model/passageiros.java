@@ -4,11 +4,15 @@ public class passageiros {
 
 	private int id_passageiros;
 	private String nome;
-	private Integer cpf;
+	private String cpf;
 	private String email;
-	private Integer telefone;
+	private String telefone;
 	
-	public passageiros(String nome, Integer cpf, String email, Integer telefone) {
+	
+	public passageiros() {
+		
+	}
+	public passageiros(String nome, String cpf, String email, String telefone) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
@@ -31,11 +35,11 @@ public class passageiros {
 		this.nome = nome;
 	}
 
-	public Integer getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(Integer cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -47,11 +51,11 @@ public class passageiros {
 		this.email = email;
 	}
 
-	public Integer getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(Integer telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	

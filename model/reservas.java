@@ -10,8 +10,12 @@ public class reservas {
 	private Date data_reservar;
 	private int id_resevas;
 	
+	public reservas() {
+		
+	}
 	
-	public reservas(voos voo, String assento, Date data_reservar, passageiros passageiro) {
+	
+	public reservas(passageiros passageiro, voos voo, String assento, Date data_reservar) {
 		super();
 		this.voo = voo;
 		this.assento = assento;

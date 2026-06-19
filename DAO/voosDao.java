@@ -10,6 +10,8 @@ import java.util.List;
 
 import com.mysql.cj.protocol.Resultset;
 
+import model.aeronaves;
+import model.reservas;
 import model.voos;
 import util.Conexao;
 
@@ -25,13 +27,14 @@ public class voosDao {
 	
 	public void salvar(voos a) throws SQLException {
 		
-		String sql = "INSERT INTO voos(Embarque, Desembarque, numero_voo, companhia,status_voo) VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO voos(Embarque, Desembarque, numero_voo, companhia,status_voo, id_aeronaves) VALUES (?, ?, ?, ?, ?, ?)";
 		PreparedStatement stmt = con.prepareStatement(sql);
 		stmt.setString(1, a.getEmbarque());
 		stmt.setString(2, a.getDesembarque());
 		stmt.setString(3, a.getNumero_voo());
 		stmt.setString(4, a.getCompanhia());
 		stmt.setString(5, a.getStatus());
+		stmt.setInt(6, ( a.getAeronaves()).getId_aeronaves());
 		
 		stmt.execute();
 		
@@ -40,13 +43,14 @@ public class voosDao {
 	
 	
 	public void atualizar(voos a) throws SQLException {
-		String sql = "update voos set Embarque = ? , Desembarque = ?, companhia = ?, status_voo = ? where numero_voo = ?";
+		String sql = "update voos set Embarque = ? , Desembarque = ?, companhia = ?, status_voo = ?, id_aeronaves = ? where numero_voo = ?";
 		PreparedStatement stmt = con.prepareStatement(sql);
 		stmt.setString(1, a.getEmbarque());
 		stmt.setString(2, a.getDesembarque());
 		stmt.setString(3, a.getCompanhia());
 		stmt.setString(4, a.getStatus());
 		stmt.setString(5, a.getNumero_voo());
+		stmt.setInt(6, a.getAeronaves().getId_aeronaves());
 		
 		stmt.execute();
 	}
@@ -76,8 +80,17 @@ public class voosDao {
 			stmt.setString(1, numero);
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {
-				return mapear(rs);
-			}
+	            voos vooEncontrado = mapear(rs); // Monta o voo básico
+	            
+	            
+	            resevasDAO resDao = new resevasDAO(); 
+	            
+	            
+	            List<reservas> passageirosDoVoo = resDao.buscarReservasPorVoo(vooEncontrado.getId_voo());
+	            vooEncontrado.setListresevar(passageirosDoVoo); 
+	            
+	            return vooEncontrado;
+	        }
 		}catch(SQLException e) {
 			
 			e.printStackTrace();
@@ -98,6 +111,9 @@ public class voosDao {
 		}
 		
 	}
+	
+	
+	
 	private voos mapear(ResultSet rs) throws SQLException {
 		
 		voos aero = new voos();
@@ -106,8 +122,17 @@ public class voosDao {
 		aero.setNumero_voo(rs.getString("numero_voo"));
 		aero.setCompanhia(rs.getString("companhia"));
 		aero.setStatus(rs.getString("status_voo"));
+		
+		aeronaves ae = new aeronaves();
+		
+		ae.setId_aeronaves(rs.getInt("id_aeronaves"));
+		
+		aero.setAeronaves(ae);
+		
 		return aero;
 	}
+	
+	
 	
 	
 }
