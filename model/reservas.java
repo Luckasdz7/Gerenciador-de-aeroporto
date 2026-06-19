@@ -10,6 +10,13 @@ public class reservas {
 	private Date data_reservar;
 	private int id_resevas;
 	
+	@Override
+	public String toString() {
+		return "reservas [voo=" + voo + ", passageiro=" + passageiro + ", assento=" + assento + ", data_reservar="
+				+ data_reservar + ", id_resevas=" + id_resevas + "]";
+	}
+
+
 	public reservas() {
 		
 	}
