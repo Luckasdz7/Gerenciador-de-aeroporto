@@ -19,6 +19,10 @@ public class aeronaves {
 	
 	
 	
+	@Override
+	public String toString() {
+		return "aeronaves [id_aeronaves=" + id_aeronaves + ", modelos=" + modelos + ", capacidade=" + capacidade + "]";
+	}
 	public int getId_aeronaves() {
 		return id_aeronaves;
 	}
