@@ -6,6 +6,7 @@ public class aeronaves {
 	private String modelos;
 	private int capacidade;
 	
+	
 	public aeronaves()
 	{
 		

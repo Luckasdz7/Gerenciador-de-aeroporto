@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class voos {
 	
 	private int voos; 
@@ -9,19 +12,42 @@ public class voos {
 	private String numero_voo;
 	private String companhia;
 	private String status;
+	private aeronaves aeronaves;
+	List<reservas> listresevar;
 	
 	
 	public voos() {
 		
 	}
-	public voos(String embarque, String desembarque, String numero_voo, String companhia, String status) {
+	public voos(String embarque, String desembarque, String numero_voo, String companhia, String status,  aeronaves aeronaves ) {
 		super();
 		Embarque = embarque;
 		Desembarque = desembarque;
 		this.numero_voo = numero_voo;
 		this.companhia = companhia;
 		this.status = status;
+		this.aeronaves =  aeronaves;
+		
+		 listresevar = new ArrayList<>();
 	}
+	
+	
+	public aeronaves getAeronaves() {
+		return aeronaves;
+	}
+	
+	public void setAeronaves(aeronaves aeronaves) {
+		this.aeronaves = aeronaves;
+	}
+	
+	public List<reservas> getListresevar() {
+		return listresevar;
+	}
+	
+	public void setListresevar(List<reservas> listresevar) {
+		this.listresevar = listresevar;
+	}
+	
 	public String getEmbarque() {
 		return Embarque;
 	}

@@ -8,7 +8,7 @@ public class usuarios {
 	private perfil perfil;
 	
 	
-	public usuarios(int id_usuarios, String login, String senha, model.perfil perfil) {
+	public usuarios(int id_usuarios, String login, String senha, perfil perfil) {
 		super();
 		this.id_usuarios = id_usuarios;
 		this.login = login;
