@@ -58,13 +58,17 @@ public class passageiros {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+	
 	@Override
 	public String toString() {
-		return "passageiros [id_passageiros=" + id_passageiros + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email
-				+ ", telefone=" + telefone + "]";
+	    return "┌─ PASSAGEIRO ───────────────────────\n"
+	         + "│  ID       : " + id_passageiros + "\n"
+	         + "│  Nome     : " + nome           + "\n"
+	         + "│  CPF      : " + cpf            + "\n"
+	         + "│  Email    : " + email          + "\n"
+	         + "│  Telefone : " + telefone       + "\n"
+	         + "└────────────────────────────────────";
 	}
-	
-	
 	
 	
 }

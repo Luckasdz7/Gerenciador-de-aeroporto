@@ -60,5 +60,15 @@ public class usuarios {
 		this.perfil = perfil;
 	}
 	
+	@Override
+	public String toString() {
+	    return "┌─ USUÁRIO ──────────────────────────\n"
+	         + "│  ID     : " + id_usuarios + "\n"
+	         + "│  Login  : " + login       + "\n"
+	         + "│  Senha  : " + senha       + "\n"
+	         + "│  Perfil : " + perfil      + "\n"
+	         + "└────────────────────────────────────";
+	}
+	
 	
 }

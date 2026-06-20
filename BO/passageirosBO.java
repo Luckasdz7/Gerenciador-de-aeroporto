@@ -13,26 +13,26 @@ public class passageirosBO {
 	
 	public boolean verificarcpf(String p) {
 		if(p.length() < 11) {
-			return false;
-		}else {
 			return true;
+		}else {
+			return false;
 		}
 	}
-	public void Salvar(passageiros p) throws SQLException{
+	public void Salvar(passageiros p) throws Exception{
 		
 		
 		 
 		if(verificarcpf( p.getCpf())){
-			System.out.println("Erro no cpf tente novamente");
+			throw new Exception("Passageiros ou voos não podem ser nulos!");
 			
 		}else {
 			 dao.Salvar(p);
 		}
 	}
 	
-	public void Atualizar(passageiros p) throws SQLException {
+	public void Atualizar(passageiros p)  throws SQLException, Exception  {
 		if(verificarcpf(p.getCpf())){
-			System.out.println("Erro no cpf tente novamente");
+			throw new Exception("cpf INVALIDO ");
 			
 		}else {
 			 dao.Atualizar(p);
@@ -46,10 +46,10 @@ public class passageirosBO {
 	}
 	
 	
-	public void viwer(String cpf) {
+	public void viwer(String cpf) throws SQLException, Exception{
 		
 		if(verificarcpf(cpf)) {
-			System.out.println("Erro no cpf tente novamente");
+			throw new Exception("cpf INVALIDO ");
 		}else {
 			dao.viwer(cpf);
 		}

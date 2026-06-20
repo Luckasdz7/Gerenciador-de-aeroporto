@@ -34,6 +34,53 @@ public class usuarioDAO {
         }
         return null; // Retorna null se não achar o usuário
     }
+    
+    public void salvar(usuarios u) throws SQLException {
+        String sql = "INSERT INTO usuarios(login, senha, perfil) VALUES (?, ?, ?)";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, u.getLogin());
+        stmt.setString(2, u.getSenha());
+        stmt.setString(3, u.getPerfil().name());
+        stmt.execute();
+    }
+
+    public void atualizar(usuarios u) throws SQLException {
+        String sql = "UPDATE usuarios SET login = ?, senha = ?, perfil = ? WHERE id_usuarios = ?";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, u.getLogin());
+        stmt.setString(2, u.getSenha());
+        stmt.setString(3, u.getPerfil().name());
+        stmt.setInt(4, u.getId_usuarios());
+        stmt.execute();
+    }
+
+    public void excluir(int id) {
+        try {
+            PreparedStatement stmt = con.prepareStatement("DELETE FROM usuarios WHERE id_usuarios = ?");
+            stmt.setInt(1, id);
+            stmt.execute();
+            System.out.println("  Usuário " + id + " excluído com sucesso!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("  Erro ao excluir usuário " + id);
+        }
+    }
+
+    public void visualizar(int id) {
+        try {
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM usuarios WHERE id_usuarios = ?");
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                System.out.println(mapear(rs));
+            } else {
+                System.out.println("  Usuário não encontrado para o ID: " + id);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
 
     private usuarios mapear(ResultSet rs) throws SQLException {
         usuarios u = new usuarios();
