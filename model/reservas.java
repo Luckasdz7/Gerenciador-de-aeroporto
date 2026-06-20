@@ -10,12 +10,21 @@ public class reservas {
 	private Date data_reservar;
 	private int id_resevas;
 	
+	
+
 	@Override
 	public String toString() {
-		return "reservas [voo=" + voo + ", passageiro=" + passageiro + ", assento=" + assento + ", data_reservar="
-				+ data_reservar + ", id_resevas=" + id_resevas + "]";
-	}
+	    String nomePassageiro = (passageiro != null) ? passageiro.getNome() : "N/A";
+	    String cpfPassageiro  = (passageiro != null) ? passageiro.getCpf()  : "N/A";
+	    String numeroVoo      = (voo != null)        ? voo.getNumero_voo()  : "N/A";
 
+	    return "┌─ RESERVA ──────────────────────────\n"
+	         + "│  Passageiro : " + nomePassageiro + "\n"
+	         + "│  CPF        : " + cpfPassageiro  + "\n"
+	         + "│  Voo        : " + numeroVoo      + "\n"
+	         + "│  Assento    : " + assento        + "\n"
+	         + "└────────────────────────────────────";
+	}
 
 	public reservas() {
 		

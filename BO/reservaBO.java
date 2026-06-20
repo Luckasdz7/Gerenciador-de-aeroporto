@@ -1,6 +1,7 @@
 package BO;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import DAO.resevasDAO; // Usando exatamente o nome que está na sua imagem
@@ -20,7 +21,7 @@ public class reservaBO {
 	
 	public void salvar(reservas re) throws SQLException, Exception {
 		if(verificar( re) ) {
-			System.out.println("passageiros ou voos nulos , não foi possivel salvar");
+			throw new Exception("Passageiros ou voos não podem ser nulos!");
 		}else {
 			dao.salvar(re);
 		}
@@ -32,7 +33,7 @@ public class reservaBO {
 	
 	public void atualizar(reservas re) throws SQLException, Exception {
 		if(verificar( re) ) {
-			System.out.println("passageiros ou voos nulos , não foi possivel salvar");
+			throw new Exception("Passageiros ou voos não podem ser nulos!");
 		}else {
 			dao.atualizar(re);
 		}
@@ -50,11 +51,17 @@ public class reservaBO {
 	}
 	
 	public List<reservas> mostraporcpf(String cpf) throws SQLException, Exception {
+		 
+		List<reservas> listares = new ArrayList<>();
+		
 		if(cpf.length() < 11) {
 			System.out.println("CPF INVALIDO, nao foi possivel fazer a executar");
 			return null;
 		}else {
-			return dao.mostraporcpf(cpf);
+			
+			
+		     
+		      return  dao.mostraporcpf(cpf);
 		}
 		
 		

@@ -21,8 +21,13 @@ public class aeronaves {
 	
 	@Override
 	public String toString() {
-		return "aeronaves [id_aeronaves=" + id_aeronaves + ", modelos=" + modelos + ", capacidade=" + capacidade + "]";
+	    return "┌─ AERONAVE ─────────────────────────\n"
+	         + "│  ID       : " + id_aeronaves + "\n"
+	         + "│  Modelo   : " + modelos      + "\n"
+	         + "│  Capac.   : " + capacidade   + " passageiros\n"
+	         + "└────────────────────────────────────";
 	}
+	
 	public int getId_aeronaves() {
 		return id_aeronaves;
 	}

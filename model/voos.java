@@ -91,9 +91,13 @@ public class voos {
 	}
 	@Override
 	public String toString() {
-		return "  || Embarque= " + Embarque + ", Desembarque = " + Desembarque + ", numero_voo = " + numero_voo
-				+ ", companhia = " + companhia + ", status = " + status + "||";
+	    return "┌─ VOO ──────────────────────────────\n"
+	         + "│  Número   : " + numero_voo  + "\n"
+	         + "│  Embarque : " + Embarque    + "\n"
+	         + "│  Pouso    : " + Desembarque + "\n"
+	         + "│  Companhia: " + companhia   + "\n"
+	         + "│  Status   : " + status      + "\n"
+	         + "└────────────────────────────────────";
 	}
-	
 	
 }
