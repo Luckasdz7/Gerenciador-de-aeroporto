@@ -75,4 +75,8 @@ public class aeronaveBO {
 		
 		dao.Excluir(id);
 	}
+	
+	public List<aeronaves> listarTodos() {
+	    return dao.listarTodos();
+	}
 }

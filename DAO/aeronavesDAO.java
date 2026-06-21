@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.aeronaves;
 import model.passageiros;
@@ -76,6 +78,20 @@ public class aeronavesDAO {
 		}
 		return null;
 		
+	}
+	
+	public List<aeronaves> listarTodos() {
+	    List<aeronaves> lista = new ArrayList<>();
+	    try {
+	        PreparedStatement stmt = con.prepareStatement("SELECT * FROM aeronaves");
+	        ResultSet rs = stmt.executeQuery();
+	        while (rs.next()) {
+	            lista.add(mapear(rs));
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return lista;
 	}
 
 	private aeronaves mapear(ResultSet rs) throws SQLException {

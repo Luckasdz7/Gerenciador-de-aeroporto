@@ -47,11 +47,12 @@ public class passageirosBO {
 	
 	
 	public void viwer(String cpf) throws SQLException, Exception{
-		
+		passageiros p;
 		if(verificarcpf(cpf)) {
 			throw new Exception("cpf INVALIDO ");
 		}else {
-			dao.viwer(cpf);
+			p  = dao.buscarPorCpf(cpf);
+			System.out.println(p.toString());
 		}
 	
 	}

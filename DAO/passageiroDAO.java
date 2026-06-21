@@ -58,27 +58,21 @@ public class passageiroDAO {
 		}
 	}
 	
-	public void viwer(String cpf) {
-		try {
-			PreparedStatement stmt = con.prepareStatement("SELECT * FROM passageiros where cpf = ?");
-			stmt.setString(1, cpf);
-			ResultSet rs = stmt.executeQuery();
-			passageiros p = null;
-			if(rs.next()) {
-				 p =  mapear(rs);
-			}
-			if (p != null) {
-			    System.out.println(p.toString());
-			} else {
-			    System.out.println("Passageiro não encontrado para o CPF: " + cpf);
-			}
-			
-		}catch(SQLException e) {
-			
-			e.printStackTrace();
-		}
-		
+	public passageiros buscarPorCpf(String cpf) {
+	    try {
+	        PreparedStatement stmt = con.prepareStatement("SELECT * FROM passageiros WHERE cpf = ?");
+	        stmt.setString(1, cpf);
+	        ResultSet rs = stmt.executeQuery();
+	        if (rs.next()) {
+	            return mapear(rs);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return null;
 	}
+		
+	
 
 	private passageiros mapear(ResultSet rs) throws SQLException {
 		

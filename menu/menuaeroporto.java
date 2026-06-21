@@ -397,13 +397,14 @@ public class menuaeroporto {
 
     private static void submenuAeronaveAdmin(Scanner sc) throws Exception {
         int op = 0;
-        while (op != 5) {
+        while (op != 6) {
             System.out.println("\n--- AERONAVES ---");
             System.out.println("1 - Cadastrar");
             System.out.println("2 - Atualizar");
             System.out.println("3 - Excluir");
             System.out.println("4 - Buscar por ID");
-            System.out.println("5 - Voltar");
+            System.out.println("5-  Buscar todas");
+            System.out.println("6 - Voltar");
             System.out.print("Opcao: ");
             op = sc.nextInt(); sc.nextLine();
 
@@ -444,7 +445,11 @@ public class menuaeroporto {
                     buscarAeronavePorId(sc);
                     break;
 
-                case 5: break;
+                case 5:
+                	listartodasaeronaves();
+                	break;
+                case 6:
+                	break;
                 default: System.out.println("Opcao invalida.");
             }
         }
@@ -579,5 +584,18 @@ public class menuaeroporto {
         }else {        
         	   System.out.println("Aeronave nao encontrada.");
         }
+    }
+    
+    private static void listartodasaeronaves() {
+    	List<aeronaves> lista = aBO.listarTodos();
+
+    	if (lista.isEmpty()) {
+    	    System.out.println("Nenhuma aeronave cadastrada.");
+    	} else {
+    	    System.out.println("\n===== AERONAVES CADASTRADAS =====");
+    	    for (aeronaves a : lista) {
+    	        System.out.println(a.toString()); 
+    	    }
+    	}
     }
 }

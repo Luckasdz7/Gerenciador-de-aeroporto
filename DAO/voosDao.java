@@ -43,7 +43,7 @@ public class voosDao {
 	
 	
 	public void atualizar(voos a) throws SQLException {
-		String sql = "update voos set Embarque = ? , Desembarque = ?, companhia = ?, status_voo = ?, id_aeronaves = ? where numero_voo = ?";
+		String sql = "update voos set Embarque = ? , Desembarque = ?, companhia = ?, status_voo = ?, numero_voo = ? where  id_aeronaves= ?";
 		PreparedStatement stmt = con.prepareStatement(sql);
 		stmt.setString(1, a.getEmbarque());
 		stmt.setString(2, a.getDesembarque());

@@ -59,24 +59,18 @@ public class resevasDAO {
 	}
 	
 	public List<reservas> mostrartudo() throws SQLException {
-		
-		List<reservas> listares = new ArrayList<>();
-		String sql = "SELECT r.id_resevar, r.assento, r.data_reservar, " +
-	             "p.id_passageiros, p.nome, p.cpf, " +
-	             "v.id as id_voo, v.numero_voo " +
-	             "FROM reservas r " +
-	             "JOIN passageiros p ON r.id_passageiros = p.id_passageiros " +
-	             "JOIN voos v ON r.id_voos = v.id";
-		
-		PreparedStatement stmt = con.prepareStatement(sql);
-		ResultSet rs = stmt.executeQuery();
-		
-		while(rs.next()) {
-			listares.add(mapear(rs));
-		}
-		return listares;
-		
-	}
+        List<reservas> listares = new ArrayList<>();
+        // O Select gigante agora vira apenas isso:
+        String sql = "SELECT * FROM vw_detalhes_reservas";
+        
+        PreparedStatement stmt = con.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        
+        while(rs.next()) {
+            listares.add(mapear(rs));
+        }
+        return listares;
+    }
 	
 	public List<reservas> buscarReservasPorVoo(int idVoo) throws SQLException {
 	    List<reservas> lista = new ArrayList<>();
